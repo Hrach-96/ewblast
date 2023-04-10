@@ -1,4 +1,4 @@
 @extends('layouts.admin.app')
 @section('content')
-	dasdasd
+	Hello
 @endsection
