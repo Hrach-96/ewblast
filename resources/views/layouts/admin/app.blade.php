@@ -29,16 +29,30 @@
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#aboutUsSection"
+                    aria-expanded="true" aria-controls="aboutUsSection">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Մեր մասին</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="aboutUsSection" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{route('admin.about_us.list')}}">Տեսնել Բոլորը</a>
                         <a class="collapse-item" href="{{route('admin.about_us.add_new')}}">Ավելացնել</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#newsSection"
+                    aria-expanded="true" aria-controls="newsSection">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Նորություններ</span>
+                </a>
+                <div id="newsSection" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('admin.news.category.list')}}">Կատեգորիաներ</a>
+                        <a class="collapse-item" href="{{route('admin.about_us.add_new')}}">Բոլոր Նորություններ</a>
                     </div>
                 </div>
             </li>

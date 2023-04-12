@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\NewsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,5 +31,11 @@ Route::group(['middleware'=>'auth'], function(){
 		Route::any('/add-new', [AboutUsController::class, 'add_new'])->name('admin.about_us.add_new');
 		Route::any('/delete', [AboutUsController::class, 'delete'])->name('admin.about_us.delete');
 		Route::any('/edit', [AboutUsController::class, 'edit'])->name('admin.about_us.edit');
+	});
+	Route::group(['prefix'=>'news-categories'],function(){
+		Route::get('/category-list', [NewsController::class, 'category_list'])->name('admin.news.category.list');
+		Route::any('/category-add-new', [NewsController::class, 'category_add_new'])->name('admin.news.category.add_new');
+		Route::any('/category-delete', [NewsController::class, 'category_delete'])->name('admin.news.category.delete');
+		Route::any('/category-edit', [NewsController::class, 'category_edit'])->name('admin.news.category.edit');
 	});
 });
