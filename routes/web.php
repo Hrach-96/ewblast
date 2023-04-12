@@ -38,4 +38,10 @@ Route::group(['middleware'=>'auth'], function(){
 		Route::any('/category-delete', [NewsController::class, 'category_delete'])->name('admin.news.category.delete');
 		Route::any('/category-edit', [NewsController::class, 'category_edit'])->name('admin.news.category.edit');
 	});
+	Route::group(['prefix'=>'news'],function(){
+		Route::get('/news-list', [NewsController::class, 'news_list'])->name('admin.news.list');
+		Route::any('/news-add-new', [NewsController::class, 'news_add_new'])->name('admin.news.add_new');
+		Route::any('/news-delete', [NewsController::class, 'news_delete'])->name('admin.news.delete');
+		Route::any('/news-edit', [NewsController::class, 'news_edit'])->name('admin.news.edit');
+	});
 });
