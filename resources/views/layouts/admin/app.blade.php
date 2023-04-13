@@ -169,5 +169,11 @@
     <script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="/assets/js/sb-admin-2.min.js"></script>
+    <script src="/assets/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '.editorTextarea',
+          });
+    </script>
 </body>
 </html>

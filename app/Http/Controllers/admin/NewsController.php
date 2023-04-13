@@ -54,7 +54,7 @@ class NewsController extends Controller
 			}
 			$file_path = '';
 			if ($request->hasFile('file_path')) {
-				$file_path = $request->file_path->store('public/events_files');
+				$file_path = $request->file_path->store('public/news_files');
 				$file_path = explode('public/',$file_path)[1];
 			}
 			News::create([
@@ -95,9 +95,9 @@ class NewsController extends Controller
 				$image_url = $request->image->store('public/news');
 				$image_url = explode('public/',$image_url)[1];
 			}
-			$file_path = $events->file_path;
+			$file_path = $news->file_path;
 			if ($request->hasFile('file_path')) {
-				$file_path = $request->file_path->store('public/events_files');
+				$file_path = $request->file_path->store('public/news_files');
 				$file_path = explode('public/',$file_path)[1];
 			}
 			$news->title_am = $request->title_am;
@@ -105,7 +105,7 @@ class NewsController extends Controller
 			$news->category_id = $request->category_id;
 			$news->content_am = $request->content_am;
 			$news->content_en = $request->content_en;
-			$events->file_path = $file_path;
+			$news->file_path = $file_path;
 			$news->image = $image_url;
 			$news->save();
 			toastr()->success('Data has been Updated successfully!');
