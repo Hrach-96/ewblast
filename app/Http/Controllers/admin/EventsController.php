@@ -3,37 +3,37 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\NewsCategories;
-use App\Models\News;
+use App\Models\EventsCategories;
+use App\Models\Events;
 use App\Http\Controllers\Controller;
 
-class NewsController extends Controller
+class EventsController extends Controller
 {
-    protected $layoutCategoryFolder = 'admin.news_category';
-    protected $layoutNewsFolder = 'admin.news';
+    protected $layoutCategoryFolder = 'admin.events_category';
+    protected $layoutEventsFolder = 'admin.events';
 	public function category_list(){
-		$lists = NewsCategories::orderBy('id','desc')->paginate(10);
+		$lists = EventsCategories::orderBy('id','desc')->paginate(10);
 		return view("{$this->layoutCategoryFolder}.list",compact('lists'));
 	}
-	public function news_list(){
-		$lists = News::orderBy('id','desc')->paginate(10);
-		return view("{$this->layoutNewsFolder}.list",compact('lists'));
+	public function events_list(){
+		$lists = Events::orderBy('id','desc')->paginate(10);
+		return view("{$this->layoutEventsFolder}.list",compact('lists'));
 	}
 	public function category_delete(Request $request){
-		$category = NewsCategories::findOrFail($request->id);
+		$category = EventsCategories::findOrFail($request->id);
 		$category->delete();
 		toastr()->success('Data has been deleted successfully!');
-		return redirect()->route('admin.news.category.list');
+		return redirect()->route('admin.events.category.list');
 	}
-	public function news_delete(Request $request){
-		$news = News::findOrFail($request->id);
-		$news->delete();
+	public function events_delete(Request $request){
+		$events = Events::findOrFail($request->id);
+		$events->delete();
 		toastr()->success('Data has been deleted successfully!');
-		return redirect()->route('admin.news.list');
+		return redirect()->route('admin.events.list');
 	}
 	public function category_add_new(Request $request){
 		if($request->isMethod('post')){
-			NewsCategories::create([
+			EventsCategories::create([
 				'name_am' => $request->name_am,
 				'name_en' => $request->name_en,
 			]);
@@ -42,14 +42,14 @@ class NewsController extends Controller
 		else{
 			return view("{$this->layoutCategoryFolder}.add_new");
 		}
-		return redirect()->route('admin.news.category.list');
+		return redirect()->route('admin.events.category.list');
 	}
-	public function news_add_new(Request $request){
-		$categories = NewsCategories::all();
+	public function events_add_new(Request $request){
+		$categories = EventsCategories::all();
 		if($request->isMethod('post')){
 			$image_url = '';
 			if ($request->hasFile('image')) {
-				$image_url = $request->image->store('public/news');
+				$image_url = $request->image->store('public/events');
 				$image_url = explode('public/',$image_url)[1];
 			}
 			$file_path = '';
@@ -57,24 +57,24 @@ class NewsController extends Controller
 				$file_path = $request->file_path->store('public/events_files');
 				$file_path = explode('public/',$file_path)[1];
 			}
-			News::create([
+			Events::create([
 				'title_am' => $request->title_am,
 				'title_en' => $request->title_en,
 				'category_id' => $request->category_id,
 				'content_am' => $request->content_am,
 				'content_en' => $request->content_en,
-				'file_path' => $file_path,
 				'image' => $image_url,
+				'file_path' => $file_path,
 			]);
 			toastr()->success('Data has been added successfully!');
 		}
 		else{
-			return view("{$this->layoutNewsFolder}.add_new",compact('categories'));
+			return view("{$this->layoutEventsFolder}.add_new",compact('categories'));
 		}
-		return redirect()->route('admin.news.list');
+		return redirect()->route('admin.events.list');
 	}
 	public function category_edit(Request $request){
-		$category = NewsCategories::findOrFail($request->id);
+		$category = EventsCategories::findOrFail($request->id);
 		if($request->isMethod('post')){
 			$category->name_am = $request->name_am;
 			$category->name_en = $request->name_en;
@@ -84,15 +84,15 @@ class NewsController extends Controller
 		else{
 			return view("{$this->layoutCategoryFolder}.edit",compact('category'));
 		}
-		return redirect()->route('admin.news.category.list');
+		return redirect()->route('admin.events.category.list');
 	}
-	public function news_edit(Request $request){
-		$news = News::findOrFail($request->id);
-		$categories = NewsCategories::all();
+	public function events_edit(Request $request){
+		$events = Events::findOrFail($request->id);
+		$categories = EventsCategories::all();
 		if($request->isMethod('post')){
-			$image_url = $news->image;			
+			$image_url = $events->image;			
 			if ($request->hasFile('image')) {
-				$image_url = $request->image->store('public/news');
+				$image_url = $request->image->store('public/events');
 				$image_url = explode('public/',$image_url)[1];
 			}
 			$file_path = $events->file_path;
@@ -100,19 +100,19 @@ class NewsController extends Controller
 				$file_path = $request->file_path->store('public/events_files');
 				$file_path = explode('public/',$file_path)[1];
 			}
-			$news->title_am = $request->title_am;
-			$news->title_en = $request->title_en;
-			$news->category_id = $request->category_id;
-			$news->content_am = $request->content_am;
-			$news->content_en = $request->content_en;
+			$events->title_am = $request->title_am;
+			$events->title_en = $request->title_en;
+			$events->category_id = $request->category_id;
+			$events->content_am = $request->content_am;
+			$events->content_en = $request->content_en;
+			$events->image = $image_url;
 			$events->file_path = $file_path;
-			$news->image = $image_url;
-			$news->save();
+			$events->save();
 			toastr()->success('Data has been Updated successfully!');
 		}
 		else{
-			return view("{$this->layoutNewsFolder}.edit",compact('news','categories'));
+			return view("{$this->layoutEventsFolder}.edit",compact('events','categories'));
 		}
-		return redirect()->route('admin.news.list');
+		return redirect()->route('admin.events.list');
 	}
 }

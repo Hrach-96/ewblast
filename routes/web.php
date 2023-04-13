@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\NewsController;
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +44,17 @@ Route::group(['middleware'=>'auth'], function(){
 		Route::any('/news-add-new', [NewsController::class, 'news_add_new'])->name('admin.news.add_new');
 		Route::any('/news-delete', [NewsController::class, 'news_delete'])->name('admin.news.delete');
 		Route::any('/news-edit', [NewsController::class, 'news_edit'])->name('admin.news.edit');
+	});
+	Route::group(['prefix'=>'events-categories'],function(){
+		Route::get('/events-category-list', [EventsController::class, 'category_list'])->name('admin.events.category.list');
+		Route::any('/events-category-add-new', [EventsController::class, 'category_add_new'])->name('admin.events.category.add_new');
+		Route::any('/events-category-delete', [EventsController::class, 'category_delete'])->name('admin.events.category.delete');
+		Route::any('/events-category-edit', [EventsController::class, 'category_edit'])->name('admin.events.category.edit');
+	});
+	Route::group(['prefix'=>'events'],function(){
+		Route::get('/events-list', [EventsController::class, 'events_list'])->name('admin.events.list');
+		Route::any('/events-add-new', [EventsController::class, 'events_add_new'])->name('admin.events.add_new');
+		Route::any('/events-delete', [EventsController::class, 'events_delete'])->name('admin.events.delete');
+		Route::any('/events-edit', [EventsController::class, 'events_edit'])->name('admin.events.edit');
 	});
 });

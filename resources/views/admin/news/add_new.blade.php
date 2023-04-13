@@ -24,6 +24,10 @@
                 <input type='file' name='image' class='form-control'>
             </div>
             <div>
+                <label for='file_path'>File Path</label>
+                <input type='file' id='file_path' name='file_path' class='form-control'>
+            </div>
+            <div>
                 <label for='content_am'>Content Am</label>
                 <textarea name='content_am' class='form-control'></textarea>
             </div>

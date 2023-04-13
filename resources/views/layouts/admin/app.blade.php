@@ -56,6 +56,20 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#eventsSection"
+                    aria-expanded="true" aria-controls="eventsSection">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Միջոցառումներ</span>
+                </a>
+                <div id="eventsSection" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('admin.events.category.list')}}">Կատեգորիաներ</a>
+                        <a class="collapse-item" href="{{route('admin.events.list')}}">Բոլոր Միջոցառումներ</a>
+                    </div>
+                </div>
+            </li>
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
