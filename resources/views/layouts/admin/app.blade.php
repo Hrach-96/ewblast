@@ -70,6 +70,20 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#educationalResourcesSection"
+                    aria-expanded="true" aria-controls="educationalResourcesSection">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Կրթական ռեսուրսներ</span>
+                </a>
+                <div id="educationalResourcesSection" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('admin.educational.resources.list')}}">Տեսնել Բոլորը</a>
+                        <a class="collapse-item" href="{{route('admin.educational.resources.add_new')}}">Ավելացնել</a>
+                    </div>
+                </div>
+            </li>
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>

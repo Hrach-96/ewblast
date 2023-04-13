@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\EducationalResourcesController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\EventsController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\NewsController;
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +57,11 @@ Route::group(['middleware'=>'auth'], function(){
 		Route::any('/events-add-new', [EventsController::class, 'events_add_new'])->name('admin.events.add_new');
 		Route::any('/events-delete', [EventsController::class, 'events_delete'])->name('admin.events.delete');
 		Route::any('/events-edit', [EventsController::class, 'events_edit'])->name('admin.events.edit');
+	});
+	Route::group(['prefix'=>'educational-resources'],function(){
+		Route::get('/educational-resources-list', [EducationalResourcesController::class, 'list'])->name('admin.educational.resources.list');
+		Route::any('/educational-resources-add-new', [EducationalResourcesController::class, 'add_new'])->name('admin.educational.resources.add_new');
+		Route::any('/educational-resources-delete', [EducationalResourcesController::class, 'delete'])->name('admin.educational.resources.delete');
+		Route::any('/educational-resources-edit', [EducationalResourcesController::class, 'edit'])->name('admin.educational.resources.edit');
 	});
 });
