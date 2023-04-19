@@ -84,6 +84,11 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.site.settings.edit')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Կարգավորումներ</span></a>
+            </li>
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>

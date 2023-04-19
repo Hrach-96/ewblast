@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EducationalResourcesController;
+use App\Http\Controllers\Admin\SiteSettingsController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\AdminController;
@@ -63,5 +64,8 @@ Route::group(['middleware'=>'auth'], function(){
 		Route::any('/educational-resources-add-new', [EducationalResourcesController::class, 'add_new'])->name('admin.educational.resources.add_new');
 		Route::any('/educational-resources-delete', [EducationalResourcesController::class, 'delete'])->name('admin.educational.resources.delete');
 		Route::any('/educational-resources-edit', [EducationalResourcesController::class, 'edit'])->name('admin.educational.resources.edit');
+	});
+	Route::group(['prefix'=>'settings'],function(){
+		Route::any('/site-settings-edit', [SiteSettingsController::class, 'edit'])->name('admin.site.settings.edit');
 	});
 });
