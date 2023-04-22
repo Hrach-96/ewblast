@@ -54,6 +54,22 @@
 	            		<input type='radio' value='0' name='display_educational_resources' {{($display_educational_resources->value == 0)? 'checked' : ''}} id="display_educational_resources_no">
             		</div>
             	</div>
+            	<div class='col-3'>
+            		<label for='phone'>Phone</label>
+            		<input type='text' name='phone' class='form-control' placeholder='phone' value="{{getSiteSetting('phone')->value}}">
+            	</div>
+            	<div class='col-3'>
+            		<label for='email'>E-mail</label>
+            		<input type='text' name='email' class='form-control' placeholder='email' value="{{getSiteSetting('email')->value}}">
+            	</div>
+            	<div class='col-3'>
+            		<label for='address'>Address</label>
+            		<input type='text' name='address' class='form-control' placeholder='address' value="{{getSiteSetting('address')->value}}">
+            	</div>
+            	<div class='col-3'>
+            		<label for='link'>Link</label>
+            		<input type='text' name='link' class='form-control' placeholder='link' value="{{getSiteSetting('link')->value}}">
+            	</div>
             </div>
             <div>
                 <input type='submit' class='btn btn-success mt-3 float-right'>
