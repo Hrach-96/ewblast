@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SiteSettingsController;
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\TrainingController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Front\MainController;
 /*
@@ -45,6 +46,20 @@ Route::group(['middleware'=>'auth'], function(){
 		Route::any('/news-add-new', [NewsController::class, 'news_add_new'])->name('admin.news.add_new');
 		Route::any('/news-delete', [NewsController::class, 'news_delete'])->name('admin.news.delete');
 		Route::any('/news-edit', [NewsController::class, 'news_edit'])->name('admin.news.edit');
+		Route::any('/news-update-display-main', [NewsController::class, 'update_display_main'])->name('news.update.display.main');
+	});
+	Route::group(['prefix'=>'training-categories'],function(){
+		Route::get('/category-list', [TrainingController::class, 'category_list'])->name('admin.training.category.list');
+		Route::any('/category-add-new', [TrainingController::class, 'category_add_new'])->name('admin.training.category.add_new');
+		Route::any('/category-delete', [TrainingController::class, 'category_delete'])->name('admin.training.category.delete');
+		Route::any('/category-edit', [TrainingController::class, 'category_edit'])->name('admin.training.category.edit');
+	});
+	Route::group(['prefix'=>'training'],function(){
+		Route::get('/training-list', [TrainingController::class, 'training_list'])->name('admin.training.list');
+		Route::any('/training-add-new', [TrainingController::class, 'training_add_new'])->name('admin.training.add_new');
+		Route::any('/training-delete', [TrainingController::class, 'training_delete'])->name('admin.training.delete');
+		Route::any('/training-edit', [TrainingController::class, 'training_edit'])->name('admin.training.edit');
+		Route::any('/training-update-display-main', [TrainingController::class, 'update_display_main'])->name('training.update.display.main');
 	});
 	Route::group(['prefix'=>'events-categories'],function(){
 		Route::get('/events-category-list', [EventsController::class, 'category_list'])->name('admin.events.category.list');

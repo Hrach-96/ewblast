@@ -19,6 +19,12 @@ class NewsController extends Controller
 		$lists = News::orderBy('id','desc')->paginate(10);
 		return view("{$this->layoutNewsFolder}.list",compact('lists'));
 	}
+	public function update_display_main(Request $request){
+		$news = News::findOrFail($request->news_id);
+		$news->display_main = $request->val;
+		$news->save();
+		return true;
+	}
 	public function category_delete(Request $request){
 		$category = NewsCategories::findOrFail($request->id);
 		$category->delete();

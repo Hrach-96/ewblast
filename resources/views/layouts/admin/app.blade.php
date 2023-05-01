@@ -12,6 +12,7 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <meta name='csrf-token' content="{{csrf_token()}}"/>
 </head>
 <body id="page-top">
     <div id="wrapper">
@@ -53,6 +54,20 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{route('admin.news.category.list')}}">Կատեգորիաներ</a>
                         <a class="collapse-item" href="{{route('admin.news.list')}}">Բոլոր Նորություններ</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#trainingSection"
+                    aria-expanded="true" aria-controls="trainingSection">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Վերապատրաստում</span>
+                </a>
+                <div id="trainingSection" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{route('admin.training.category.list')}}">Կատեգորիաներ</a>
+                        <a class="collapse-item" href="{{route('admin.training.list')}}">Բոլոր վերապատրաստումներ</a>
                     </div>
                 </div>
             </li>
@@ -181,6 +196,7 @@
     <script src="/theme/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="/theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/sb-admin-2.min.js"></script>
     <script src="/assets/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script type="text/javascript">

@@ -1,7 +1,7 @@
 @extends('layouts.admin.app')
 @section('content')
-<input type='hidden' value="{{route('news.update.display.main')}}" class='news-update-display-main'>
-<a class='btn btn-primary float-right m-3' href='{{route('admin.news.add_new')}}'>Add new</a>
+<input type='hidden' value="{{route('training.update.display.main')}}" class='training-update-display-main'>
+<a class='btn btn-primary float-right m-3' href='{{route('admin.training.add_new')}}'>Add new</a>
 	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
             <tr>
@@ -24,12 +24,12 @@
                     </td>
                 	<td>{{$list->categoryInfo->name_en}}</td>
                     <td>
-                        <input name='display_main' class='display_main_news' type='checkbox' data-id="{{$list->id}}" {{($list->display_main == 1)? 'checked' : ''}}>
+                        <input name='display_main' class='display_main_training' type='checkbox' data-id="{{$list->id}}" {{($list->display_main == 1)? 'checked' : ''}}>
                     </td>
                     <td>{{$list->created_at}}</td>
                 	<td>
-                        <a class='btn btn-secondary' href="{{route('admin.news.edit',['id'=>$list->id])}}">Edit</a>
-                        <a class='btn btn-danger' href="{{route('admin.news.delete',['id'=>$list->id])}}">Delete</a>
+                        <a class='btn btn-secondary' href="{{route('admin.training.edit',['id'=>$list->id])}}">Edit</a>
+                        <a class='btn btn-danger' href="{{route('admin.training.delete',['id'=>$list->id])}}">Delete</a>
                     </td>
 	            </tr>
         	@endforeach
