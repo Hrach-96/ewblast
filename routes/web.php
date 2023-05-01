@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Front\MainController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,13 +19,10 @@ use App\Http\Controllers\Admin\NewsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [MainController::class, 'home'])->name('main.home');
 Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 Route::group(['middleware'=>'auth'], function(){
 	Route::group(['prefix'=>'admin'],function(){
