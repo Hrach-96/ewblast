@@ -1,0 +1,11 @@
+.changeLanguageHeader:hover{
+	cursor:pointer;
+}
+.titleBLueEffect{
+	font-family: 'Arian AMU', 'Tahoma Armenian', Tahoma, Arial, sans-serif !important;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0px;
+    margin: 4px 0px;
+    color: #3c5c7d;
+}

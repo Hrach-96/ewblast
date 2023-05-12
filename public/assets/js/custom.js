@@ -1,9 +1,12 @@
 $(document).ready(function(){
-	$.ajaxSetup({
-		headers: {
-			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		}
-	})
+	function ajaxSetupCall(){
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		})
+	};
+
 	$(document).on('change','.display_main_news',function(){
 		var val = 0;
 		var url = $(".news-update-display-main").val()
@@ -15,6 +18,7 @@ $(document).ready(function(){
 			val:val,
 			news_id:news_id,
 		}
+		ajaxSetupCall();
 		$.ajax({
 			type: "POST",
 			url: url,
@@ -23,6 +27,15 @@ $(document).ready(function(){
 				console.log(data);
 			}
 		})
+	})
+	$(document).on('click','.changeLanguageHeader',function(){
+		var new_lang = $(this).attr('data-lang');
+		var current_url = $(this).attr('data-current-url');
+		var current_lang = current_url.split('lang=')[1];
+		if(current_lang != new_lang){
+			var new_url = current_url.replace(current_lang,new_lang)
+			window.location = new_url;
+		}
 	})
 	$(document).on('change','.display_main_training',function(){
 		var val = 0;
@@ -35,6 +48,7 @@ $(document).ready(function(){
 			val:val,
 			training_id:training_id,
 		}
+		ajaxSetupCall();
 		$.ajax({
 			type: "POST",
 			url: url,

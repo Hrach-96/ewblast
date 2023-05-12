@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TrainingController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Front\MainController;
+use App\Http\Controllers\LangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,14 @@ use App\Http\Controllers\Front\MainController;
 Auth::routes();
 
 Route::get('/', [MainController::class, 'home'])->name('main.home');
+Route::get('/about-us', [MainController::class, 'about_us_view'])->name('about.us.display');
+Route::get('/education-resources', [MainController::class, 'education_resources_view'])->name('education.resources.display');
+Route::get('/news', [MainController::class, 'news_view'])->name('news.display');
+Route::get('/events', [MainController::class, 'events_view'])->name('events.display');
+Route::get('/trainings', [MainController::class, 'trainings_view'])->name('trainings.display');
+Route::get('/news-category', [MainController::class, 'news_category_view'])->name('news.category.display');
+Route::get('/events-category', [MainController::class, 'events_category_view'])->name('events.category.display');
+Route::get('/trainings-category', [MainController::class, 'trainings_category_view'])->name('trainings.category.display');
 Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
 Route::group(['middleware'=>'auth'], function(){
 	Route::group(['prefix'=>'admin'],function(){
